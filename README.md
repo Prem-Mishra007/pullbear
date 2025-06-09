@@ -30,6 +30,6 @@ For licensing inquiries → hello@pullbear.dev
 
 ---
 
-Made with ❤️ by developers, for developers.
+Made with ❤️ by former pandas who wanted their weekends back.
 
 **Ship clean. Sleep clean.** 🐼
