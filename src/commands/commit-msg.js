@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import stripJsonComments from 'strip-json-comments';
+import fs from "fs";
+import path from "path";
+import stripJsonComments from "strip-json-comments";
 const configPath = path.resolve("pullbear.config.jsonc");
 export function checkCommit(msgFilePath) {
   const message = fs.readFileSync(msgFilePath, "utf8").trim();
@@ -33,5 +33,3 @@ export function checkCommit(msgFilePath) {
     console.log("✅ Commit message passed validation.");
   }
 }
-
-

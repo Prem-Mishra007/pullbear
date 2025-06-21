@@ -1,11 +1,8 @@
 {
   "name": "pullbear",
   "version": "1.0.0",
-  "description": "**Ship clean. Sleep clean.**",
+  "description": "PR reviewer tool",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "type": "module",
   "bin": {
     "pullbear": "bin/pullbear.js"
@@ -14,10 +11,26 @@
     "commander": "^11.0.0",
     "strip-json-comments": "^5.0.2"
   },
+  "files": [
+    "bin",
+    "src",
+    "pullbear.config.jsonc"
+  ],
   "engines": {
     "node": ">=16.0.0"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "git",
+    "cli",
+    "pr",
+    "review",
+    "hook",
+    "github",
+    "commit",
+    "message",
+    "pull",
+    "request"
+  ],
+  "author": "Sleepy Panda",
   "license": "ISC"
 }
