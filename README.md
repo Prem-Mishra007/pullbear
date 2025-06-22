@@ -23,10 +23,12 @@ Now, he's here to help *you* turn back into a polar bear — rested, focused, an
 - ✅ Enforce commit message rules (min length, regex pattern)
 - ✅ Auto-inject ticket IDs into commit messages (from branch names)
 - ✅ Configurable position for ticket injection (prefix/postfix)
-- ✅ Supports customizable ticket format using `%TICKET%`
+- ✅ Supports customizable ticket format using %TICKET%
+- ✅ Restrict sensitive files from being committed (e.g., .env, *.pem)
+- ✅ Custom allowlist for safe files
 - ✅ Single-file JSONC config with inline documentation
-- ✅ One-line setup via `npx pullbear`
-- ✅ Works cross-platform (tested on Windows & Unix)
+- ✅ One-line setup via npx pullbear
+- ✅ Works cross-platform (Windows & Unix)
 - ✅ Easily debug with full logs
 - ✅ Prevent bad commits with helpful error messages
 
@@ -41,7 +43,7 @@ Now, he's here to help *you* turn back into a polar bear — rested, focused, an
 - 🔧 GitHub/Bitbucket/GitLab CI integration
 - 🧠 Rule presets (project-style templates, like Angular, Conventional Commits, etc.)
 - 👯 Pre-PR checks (file change limits, forbidden keywords, etc.)
-- 🐚 Full-blown `pullbear.conf.jsonc` validation schema and autocompletion support
+- 🐚 Full-blown pullbear.conf.jsonc validation schema and autocompletion support
 
 ---
 
@@ -52,7 +54,8 @@ Now, he's here to help *you* turn back into a polar bear — rested, focused, an
 ```bash
 npx pullbear init
 ```
->This will:
+
+This will:
 - Create a .git/hooks/commit-msg hook
 - Link it to PullBear for validation
 - Generate a pullbear.conf.jsonc with inline-documented settings
@@ -60,13 +63,13 @@ npx pullbear init
 ---
 ## 🛠 Configuration
 
-PullBear uses a single `pullbear.conf.jsonc` file at the root of your repo. It is JSONC (JSON with comments), so it's easy to read, edit, and understand.
+PullBear uses a single pullbear.conf.jsonc file at the root of your repo. It is JSONC (JSON with comments), so it's easy to read, edit, and understand.
 
-You can also use `pullbear.json` if you prefer plain JSON. The `.jsonc` format is preferred for clarity and inline docs.
+You can also use pullbear.json if you prefer plain JSON. The .jsonc format is preferred for clarity and inline docs.
 
 ---
 
-### 🧩 Example `pullbear.conf.jsonc`
+### 🧩 Example pullbear.conf.jsonc
 
 ```jsonc
 {
@@ -75,30 +78,49 @@ You can also use `pullbear.json` if you prefer plain JSON. The `.jsonc` format i
     "minLength": 10,
 
     // 🎯 Regex pattern that the commit message must match
-    // Example below requires the message to end with a period.
+    // Example: Requires the message to end with a period.
     "pattern": ".*\\.$",
 
-    // 🧠 Automatically extract a ticket ID from the branch name
-    // Set to true to enable.
+    // 🧠 Extract a ticket ID from the branch name automatically
     "autoInjectTicketFromBranch": true,
 
-    // 📍 Where to inject the ticket: 'prefix' or 'postfix'
-    // prefix → [TICKET] Commit message
-    // postfix → Commit message [TICKET]
+    // 📍 Where to inject the ticket — 'prefix' or 'postfix'
     "injectPosition": "prefix",
 
-    // 🔎 Regex used to extract the ticket ID from the branch name
-    // For example, feature/PROJ-123-login will extract "PROJ-123"
+    // 🔎 Pattern to extract ticket (e.g. PROJ-123)
     "ticketPattern": "[A-Z]+-\\d+",
 
-    // 🧱 Format of the injected ticket
-    // Use `%TICKET%` placeholder. Examples:
-    // "[%TICKET%]" → [PROJ-123]
-    // "(#%TICKET%)" → (#PROJ-123)
-    "ticketFormat": "[%TICKET%]"
-  }
+    // 🧱 Ticket format. Use %TICKET% placeholder
+    "ticketFormat": "[%TICKET%]",
+  },
+  "restrict": {
+    "sensitiveFiles": {
+      // 🔒 Enable check for sensitive files
+      "enabled": true,
+
+      // 🚫 Files to block from commit (supports glob patterns)
+      "patterns": [
+        ".env", // exact match
+        "**/*.pem", // any .pem file
+        "**/secrets.*", // secrets.*
+        "debug.log", // debug log file
+      ],
+
+      // ✅ Allowed exceptions
+      "allowlist": ["examples/.env.example"],
+    }
 }
 ```
+---
+## ⚠️ License Notice
+
+PullBear is **source-available**, not open-source.  
+You may read, use, and modify it for **personal and internal company use only**.
+
+**Commercial use, redistribution, or rebranding is strictly prohibited.**
+
+See [LICENSE](./LICENSE) for full terms or contact **hello@pullbear.dev**.
+
 ---
 
 ### &nbsp;

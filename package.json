@@ -1,6 +1,6 @@
 {
   "name": "pullbear",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "PR reviewer tool",
   "main": "index.js",
   "type": "module",
@@ -33,5 +33,5 @@
     "request"
   ],
   "author": "Sleepy Panda",
-  "license": "ISC"
+  "license": "SEE LICENSE"
 }
