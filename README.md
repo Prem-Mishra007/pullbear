@@ -1,4 +1,11 @@
 # 🐼 PullBear — Your PR's New BFF
+[![npm version](https://img.shields.io/npm/v/pullbear)](https://www.npmjs.com/package/pullbear)
+[![npm downloads](https://img.shields.io/npm/dm/pullbear)](https://www.npmjs.com/package/pullbear)
+[![license](https://img.shields.io/npm/l/pullbear)](LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/pullbear-dev/pullbear)](https://github.com/pullbear-dev/pullbear/issues)
+[![GitHub stars](https://img.shields.io/github/stars/pullbear-dev/pullbear)](https://github.com/pullbear-dev/pullbear/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/pullbear-dev/pullbear/pulls)
+[![CI](https://img.shields.io/github/actions/workflow/status/pullbear-dev/pullbear/ci.yml)](https://github.com/pullbear-dev/pullbear/actions)
 
 **Ship clean. Sleep clean.**
 
