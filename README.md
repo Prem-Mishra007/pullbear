@@ -2,9 +2,6 @@
 [![npm version](https://img.shields.io/npm/v/pullbear)](https://www.npmjs.com/package/pullbear)
 [![npm downloads](https://img.shields.io/npm/dm/pullbear)](https://www.npmjs.com/package/pullbear)
 [![license](https://img.shields.io/npm/l/pullbear)](LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/pullbear-dev/pullbear)](https://github.com/Prem-Mishra007/pullbear/issues)
-[![GitHub stars](https://img.shields.io/github/stars/pullbear-dev/pullbear)](https://github.com/Prem-Mishra007/pullbear/stargazers)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Prem-Mishra007/pullbear/pulls)
 
 **Ship clean. Sleep clean.**
 
@@ -115,8 +112,55 @@ You can also use pullbear.json if you prefer plain JSON. The .jsonc format is pr
       // ✅ Allowed exceptions
       "allowlist": ["examples/.env.example"],
     }
+  },
+  "customHooks": {
+    //need to be enabled then only hook will be called
+    "enabled": true,
+    // takes an array of Paths to custom commit-msg hook script (must be .mjs)
+    "commit-msg": [
+      "./custom-hooks/commitCheck.mjs"
+    ]
+  }
 }
 ```
+---
+## 🧩 Writing Custom Hooks
+
+You can create your own custom validation logic using JavaScript ES modules.
+
+### ✅ Example
+
+```js
+// ./custom-hooks/commitCheck.mjs
+
+export default async function (ctx) {
+  const { commitMessage, branchName, config, ticket } = ctx;
+
+  if (commitMessage.includes("WIP")) {
+    throw new Error("🚫 'WIP' commits are not allowed.");
+  }
+}
+```
+
+### 📌 Notes
+
+- Use `.mjs` extension for the hook file.
+- Export a default `async` function.
+- If an error is thrown, the commit will be rejected with the provided message.
+
+---
+
+## 🧠 Hook Context Parameters
+
+Each hook receives a single `ctx` (context) object:
+
+| Key            | Description                                |
+|----------------|--------------------------------------------|
+| `commitMessage`| Raw commit message being validated         |
+| `branchName`   | Current branch name                        |
+| `config`       | The full PullBear configuration object     |
+| `ticket`       | Extracted ticket from branch, if applicable|
+
 ---
 ## ⚠️ License Notice
 
