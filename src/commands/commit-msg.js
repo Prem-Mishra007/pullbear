@@ -1,7 +1,9 @@
 import fs from "fs";
 import { getBranchName, extractTicket, hasTicket, formatTicket, loadConfig } from "../utils.js";
+import { checkSensitiveFiles } from "../checks/checkSensitiveFiles.js";
 
 export function checkCommit(msgFilePath) {
+  checkSensitiveFiles();
   let message = fs.readFileSync(msgFilePath, "utf8").trim();
   const config = loadConfig();
   const commitConf = config.commit || {};
