@@ -2,9 +2,9 @@
 [![npm version](https://img.shields.io/npm/v/pullbear)](https://www.npmjs.com/package/pullbear)
 [![npm downloads](https://img.shields.io/npm/dm/pullbear)](https://www.npmjs.com/package/pullbear)
 [![license](https://img.shields.io/npm/l/pullbear)](LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/pullbear-dev/pullbear)](https://github.com/pullbear-dev/pullbear/issues)
-[![GitHub stars](https://img.shields.io/github/stars/pullbear-dev/pullbear)](https://github.com/pullbear-dev/pullbear/stargazers)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/pullbear-dev/pullbear/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/pullbear-dev/pullbear)](https://github.com/Prem-Mishra007/pullbear/issues)
+[![GitHub stars](https://img.shields.io/github/stars/pullbear-dev/pullbear)](https://github.com/Prem-Mishra007/pullbear/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Prem-Mishra007/pullbear/pulls)
 
 **Ship clean. Sleep clean.**
 
