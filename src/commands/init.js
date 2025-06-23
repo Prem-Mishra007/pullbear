@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 export function init() {
+  if(!fs.existsSync("node_modules/.bin/pullbear")) return console.error("⚠️ PullBear is not installed locally. Run `npm install --save-dev pullbear`.");
   const hookDir = path.resolve(".git/hooks");
   const hookFile = path.join(hookDir, "commit-msg");
   const binPath = path.join("node_modules", ".bin", "pullbear");
@@ -9,7 +10,9 @@ export function init() {
 
   fs.writeFileSync(hookFile, script, { mode: 0o755 });
   createConfigIfMissing();
-  console.log("✅ PullBear hook installed successfully.");
+  console.log(`🐼 PullBear installed successfully!
+✅ This is a one-time setup per repository.
+Every commit from now on will be automatically validated by PullBear.`);
 }
 const configFile = "pullbear.config.jsonc";
 
@@ -22,7 +25,7 @@ const defaultJsonc = `{
 
     // ✅ Optional RegEx pattern that commit message must match
     // Example: message should end with a period (.)
-    "pattern": ".*\\.$",
+    "pattern": ".*\\\\.$",
 
     // ✅ Enable auto-injection of ticket ID from branch name
     "autoInjectTicketFromBranch": true,
@@ -33,7 +36,7 @@ const defaultJsonc = `{
 
     // ✅ Define the pattern to extract ticket from the branch name
     // Example: will match PROJ-123, JIRA-456, etc.
-    "ticketPattern": "[A-Z]+-\\d+",
+    "ticketPattern": "[A-Z]+-\\\\d+",
 
     // ✅ Define how the ticket should be formatted when injected
     // You can use %TICKET% placeholder
@@ -46,7 +49,6 @@ const defaultJsonc = `{
 
   // 🚀 Future: will be adding more sections here for merge rules, PR checks, etc.
 }
-
 `;
 
 function createConfigIfMissing() {
@@ -58,5 +60,5 @@ function createConfigIfMissing() {
   }
 
   fs.writeFileSync(filePath, defaultJsonc, { flag: "wx" });
-  console.log(`✅ Created ${configFile} with inline docs.`);
+  console.log(`📁 Config file created: ${configFile}`);
 }

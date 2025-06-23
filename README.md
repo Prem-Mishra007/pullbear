@@ -29,6 +29,7 @@ Now, he's here to help *you* turn back into a polar bear — rested, focused, an
 - ✅ Supports customizable ticket format using %TICKET%
 - ✅ Restrict sensitive files from being committed (e.g., .env, *.pem)
 - ✅ Custom allowlist for safe files
+- ✅ Added custom hooks for custom validations
 - ✅ Single-file JSONC config with inline documentation
 - ✅ One-line setup via npx pullbear
 - ✅ Works cross-platform (Windows & Unix)
