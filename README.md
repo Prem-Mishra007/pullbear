@@ -136,9 +136,13 @@ You can create your own custom validation logic using JavaScript ES modules.
 
 export default async function (ctx) {
   const { commitMessage, branchName, config, ticket } = ctx;
+  
+  const now = new Date();
+  const isLateNightFriday =
+    now.getDay() === 5 && now.getHours() >= 21;
 
-  if (commitMessage.includes("WIP")) {
-    throw new Error("🚫 'WIP' commits are not allowed.");
+  if (isLateNightFriday) {
+    throw new Error("🚨 Who commits on Friday night? Go live your life. ❌");
   }
 }
 ```
