@@ -69,8 +69,6 @@ This will:
 
 PullBear uses a single pullbear.conf.jsonc file at the root of your repo. It is JSONC (JSON with comments), so it's easy to read, edit, and understand.
 
-You can also use pullbear.json if you prefer plain JSON. The .jsonc format is preferred for clarity and inline docs.
-
 ---
 
 ### 🧩 Example pullbear.conf.jsonc
@@ -107,11 +105,11 @@ You can also use pullbear.json if you prefer plain JSON. The .jsonc format is pr
         ".env", // exact match
         "**/*.pem", // any .pem file
         "**/secrets.*", // secrets.*
-        "debug.log", // debug log file
+        "debug.log" // debug log file
       ],
 
       // ✅ Allowed exceptions
-      "allowlist": ["examples/.env.example"],
+      "allowlist": ["examples/.env.example"]
     }
   },
   "customHooks": {
@@ -165,6 +163,8 @@ Each hook receives a single `ctx` (context) object:
 | `branchName`   | Current branch name                        |
 | `config`       | The full PullBear configuration object     |
 | `ticket`       | Extracted ticket from branch, if applicable|
+| `stagedFiles`  | Staged files in the branch                 |
+| `changedFiles` | Changed files in the branch                |
 
 ---
 ## ⚠️ License Notice

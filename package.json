@@ -1,6 +1,6 @@
 {
   "name": "pullbear",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "PR reviewer tool",
   "main": "index.js",
   "type": "module",
@@ -33,5 +33,13 @@
     "request"
   ],
   "author": "Sleepy Panda",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Prem-Mishra007/pullbear.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Prem-Mishra007/pullbear/issues"
+  },
+  "homepage": "https://github.com/Prem-Mishra007/pullbear#readme",
   "license": "SEE LICENSE"
 }

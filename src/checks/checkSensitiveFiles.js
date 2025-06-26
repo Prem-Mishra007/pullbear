@@ -1,19 +1,12 @@
 import fs from "fs";
 import micromatch from "micromatch";
-import { execSync } from "child_process";
 import { loadConfig } from "../utils.js";
 
-export function checkSensitiveFiles() {
+export function checkSensitiveFiles(stagedFiles) {
   const config = loadConfig();
   const restrictConf = config.restrict?.sensitiveFiles;
 
   if (!restrictConf?.enabled) return;
-
-  const stagedFiles = execSync("git diff --cached --name-only")
-    .toString()
-    .trim()
-    .split("\n")
-    .filter(Boolean);
 
   const patterns = restrictConf.patterns || [];
   const allowlist = restrictConf.allowlist || [];

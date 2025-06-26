@@ -9,7 +9,7 @@ export function loadConfig(){
     const jsonWithComments = fs.readFileSync(configPath, "utf8");
     config = JSON.parse(stripJsonComments(jsonWithComments));
   } catch (e) {
-    console.error("❌ Missing pullbear.config.jsonc in project root.");
+    console.error("❌ Missing pullbear.config.jsonc in project root.",e?.message || e);
     process.exit(1);
   }
   return config;
