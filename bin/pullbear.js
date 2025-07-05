@@ -6,6 +6,7 @@ import { checkCommit } from "../src/commands/commit-msg.js";
 import { readFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { review } from "../src/commands/review.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const pkgPath = path.join(__dirname, '../package.json');
@@ -44,5 +45,10 @@ await showMetaFlags();
 
 program.command("init").description("Setup git hooks").action(init);
 program.command("commit-msg <msgfile>").description("Check commit message").action(checkCommit);
-
+program
+  .command("review")
+  .description("Run AI review on current diff")
+  .option("-t, --target <branch>", "Target branch to compare against")
+  .option("-i, --intent <desc>", "Intent or description of the PR")
+  .action(review);
 program.parse(process.argv);
