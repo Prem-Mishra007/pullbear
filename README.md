@@ -23,6 +23,7 @@ Now, he's here to help *you* turn back into a polar bear — rested, focused, an
 
 > Works locally with Git hooks. Designed to be easily integrated into any team setup.
 
+- ✅ AI-powered PR reviewers 
 - ✅ Enforce commit message rules (min length, regex pattern)
 - ✅ Auto-inject ticket IDs into commit messages (from branch names)
 - ✅ Configurable position for ticket injection (prefix/postfix)
@@ -42,7 +43,6 @@ Now, he's here to help *you* turn back into a polar bear — rested, focused, an
 
 > These are actively being worked on and will ship incrementally:
 
-- 🔍 AI-powered PR reviewers (lint, pattern detection, risky code flagging)
 - 📦 Self-hosted + API key-based validation engine
 - 🔧 GitHub/Bitbucket/GitLab CI integration
 - 🧠 Rule presets (project-style templates, like Angular, Conventional Commits, etc.)
@@ -167,6 +167,77 @@ Each hook receives a single `ctx` (context) object:
 | `changedFiles` | Changed files in the branch                |
 
 ---
+
+## 🧠 AI-Powered Code Review (Beta)
+
+PullBear supports **AI-based code review** powered by [Groq](https://console.groq.com), helping you automatically detect:
+
+- 🐞 Bugs and risky logic  
+- 🚫 Code smells and anti-patterns  
+- 🔒 Missing validations  
+- ⚡ Performance issues  
+
+The AI focuses only on the changes in your PR, giving structured feedback like a senior engineer.
+
+---
+
+### 🚀 Getting Started with AI Review
+
+#### 1. 🔑 Get a Groq API Key
+
+- Go to [https://console.groq.com](https://console.groq.com)
+- Log in and generate an API key from your dashboard
+- Accept the usage policies when prompted
+
+> Groq currently offers generous free-tier usage. See [Groq Pricing](https://console.groq.com/docs/pricing) for details.
+
+---
+
+#### 2. ⚙️ Configure Environment
+
+Create a `.env` file in the root of your project:
+
+```env
+PULLBEAR_GROQ_KEY=your_api_key_here
+PULLBEAR_AI_MODEL=mistral-saba-24b
+```
+
+- ✅ `PULLBEAR_GROQ_KEY` is **required**  
+- 🧠 `PULLBEAR_AI_MODEL` is **optional** (defaults to `mistral-saba-24b`)
+
+---
+
+#### 3. 🧪 Run an AI Review
+
+Use the CLI:
+
+```bash
+npx pullbear review --target origin/main --intent "Refactor logging service to improve clarity"
+```
+
+- `--target` → The branch to compare changes against  
+- `--intent` → What this PR is trying to do (helps the AI focus the review)
+
+---
+
+#### 4. 📥 Sample Output
+
+```txt
+🤖 AI Review Output:
+1. [src/logger.js] Inefficient string interpolation
+   - Description: Uses string concatenation inside a log statement.
+   - Suggestion: Use template literals instead for readability.
+```
+
+---
+
+#### ⚠️ Notes
+
+- AI review runs **locally**, but makes a request to **Groq’s API**  
+- Your code is **never stored or logged**  
+- Only the **diff of changed files** is sent  
+- Internet connection is required
+
 ## ⚠️ License Notice
 
 PullBear is **source-available**, not open-source.  

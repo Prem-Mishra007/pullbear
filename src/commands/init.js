@@ -2,7 +2,10 @@ import fs from "fs";
 import path from "path";
 
 export function init() {
-  if(!fs.existsSync("node_modules/.bin/pullbear")) return console.error("⚠️ PullBear is not installed locally. Run `npm install --save-dev pullbear`.");
+  if (!fs.existsSync("node_modules/.bin/pullbear"))
+    return console.error(
+      "⚠️ PullBear is not installed locally. Run `npm install --save-dev pullbear`."
+    );
   const hookDir = path.resolve(".git/hooks");
   const hookFile = path.join(hookDir, "commit-msg");
   const binPath = path.join("node_modules", ".bin", "pullbear");

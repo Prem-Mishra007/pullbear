@@ -34,3 +34,65 @@ export function hasTicket(msg, ticket) {
 export function formatTicket(ticket, format) {
   return format.replace('%TICKET%', ticket);
 }
+export function getGitDiff(targetBranch) {
+  try {
+    const diff = execSync(`git diff ${targetBranch}`, {
+      encoding: "utf-8",
+      maxBuffer: 1024 * 1024 * 10, // 10 MB
+    });
+
+    if (!diff.trim()) {
+      console.warn(`[PullBear] No changes found against ${targetBranch}.`);
+    }
+
+    return diff.trim();
+  } catch (err) {
+    console.error(`[PullBear] Failed to get git diff from ${targetBranch}`);
+    console.error(err);
+    return "";
+  }
+}
+
+export function getStagedFiles(){
+  let stagedFiles = [];
+   try{
+    stagedFiles = execSync("git diff --cached --name-only")
+     .toString()
+     .trim()
+     .split("\n")
+     .filter(Boolean);
+  }catch(err){
+     console.warn("⚠️ Could not get staged files:", err?.message || err);
+  }
+  return stagedFiles;
+}
+export function getChangedFiles(){
+let changedFiles = [];
+  try{
+    changedFiles = execSync("git diff --name-only")
+     .toString()
+     .trim()
+     .split("\n")
+     .filter(Boolean);
+  }catch(err){
+     console.warn("⚠️ Could not get changed files:", err?.message || err);
+  }
+  return changedFiles;
+}
+export function branchExists(branch) {
+   try {
+    // Local branches
+    const local = execSync(`git branch --list "${branch}"`, {
+      stdio: ["ignore", "pipe", "ignore"],
+    }).toString();
+
+    // Remote branches
+    const remotes = execSync(`git branch -r`, {
+      stdio: ["ignore", "pipe", "ignore"],
+    }).toString();
+
+    return local.includes(branch) || remotes.includes(branch);
+  } catch {
+    return false;
+  }
+}
