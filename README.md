@@ -23,31 +23,12 @@ Now, he's here to help *you* turn back into a polar bear — rested, focused, an
 
 > Works locally with Git hooks. Designed to be easily integrated into any team setup.
 
-- ✅ AI-powered PR reviewers 
-- ✅ Enforce commit message rules (min length, regex pattern)
-- ✅ Auto-inject ticket IDs into commit messages (from branch names)
-- ✅ Configurable position for ticket injection (prefix/postfix)
-- ✅ Supports customizable ticket format using %TICKET%
-- ✅ Restrict sensitive files from being committed (e.g., .env, *.pem)
-- ✅ Custom allowlist for safe files
-- ✅ Added custom hooks for custom validations
-- ✅ Single-file JSONC config with inline documentation
-- ✅ One-line setup via npx pullbear
-- ✅ Works cross-platform (Windows & Unix)
-- ✅ Easily debug with full logs
-- ✅ Prevent bad commits with helpful error messages
-
----
-
-## 🔮 Coming Soon
-
-> These are actively being worked on and will ship incrementally:
-
-- 📦 Self-hosted + API key-based validation engine
-- 🔧 GitHub/Bitbucket/GitLab CI integration
-- 🧠 Rule presets (project-style templates, like Angular, Conventional Commits, etc.)
-- 👯 Pre-PR checks (file change limits, forbidden keywords, etc.)
-- 🐚 Full-blown pullbear.conf.jsonc validation schema and autocompletion support
+- ✅ Commit message rules (length, patterns)
+- 🔖 Ticket ID injection from branch names
+- 🚫 Blocking sensitive files (`.env`, `*.pem`, etc.)
+- 🔌 Plug-in custom JavaScript hooks
+- 💬 AI-powered PR review (Groq-powered)
+- 🧠 All in a single JSONC config file
 
 ---
 
